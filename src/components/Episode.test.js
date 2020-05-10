@@ -1,6 +1,6 @@
 import React from "react";
 import Episodes from "./Episodes";
-import * as rtl from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 const ep = [
   {
@@ -25,19 +25,7 @@ const ep = [
     _links: { self: { href: "http://api.tvmaze.com/episodes/553946" } },
   },
 ];
-
-describe("Episode", () => {
-  let wrapper;
-  afterEach(rtl.cleanup);
-
-  beforeEach(() => {
-    wrapper = rtl.render(<Episodes episodes={ep} />);
-  });
-
-  it("it displays without crashing", async () => {
-    const episodesDiv = await wrapper.findByText(
-      "Chapter One: The Vanishing of Will Byers"
-    );
-    expect(episodesDiv).toBeVisible();
-  });
+test("Episodes render Correctly", () => {
+  const { findByText } = render(<Episodes episodes={ep} />);
+  findByText("Chapter One: The Vanishing of Will Byers");
 });

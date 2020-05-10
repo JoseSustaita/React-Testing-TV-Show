@@ -9,4 +9,5 @@ test("App renders correctly", () => {
 });
 test("Dropdown renders correctly", () => {
   const { getByText } = render(<Dropdown />);
+  getByText("Select...");
 });
